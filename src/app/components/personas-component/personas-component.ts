@@ -11,11 +11,19 @@ import { ServicePersona } from '../../services/ServicePersonas';
 })
 export class PersonasComponent implements OnInit {
   public personas!: Array<Persona>;
+  public personasAxios!: Array<Persona>;
+  public personasFetch!: Array<Persona>;
 
   constructor(private _service: ServicePersona) {}
   ngOnInit(): void {
     this._service.getPersonas().then((response) => {
       this.personas = response;
+    });
+    this._service.getPersonasAxios().then((response) => {
+      this.personasAxios = response;
+    });
+    this._service.getPersonasFetch().then((response) => {
+      this.personasFetch = response;
     });
   }
 }
